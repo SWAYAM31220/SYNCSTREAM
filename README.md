@@ -68,7 +68,7 @@ SyncStream is a **premium watch-together platform** that lets you and your frien
 
 ## 🚀 **Live Demo**
 
-### Try it now: **[syncstream.demo](https://yourusername.github.io/syncstream)** 🌐
+### Try it now: **[syncstream.demo](https://SWAYAM31220.github.io/syncstream)** 🌐
 
 *Or scan this QR code with your phone:*
 
@@ -437,3 +437,4 @@ MIT License - Feel free to use this project for:
 *Version 2.0.0 • Last updated: December 2024*
 
 </div>
+
