@@ -1,0 +1,417 @@
+/* ==========================================================================
+   SYNCSTREAM DESIGN SYSTEM
+   Production-Ready Design Tokens & Variables
+   ========================================================================== */
+
+/* ==========================================================================
+   DESIGN TOKENS
+   ========================================================================== */
+
+:root {
+  /* ===== COLOR SYSTEM ===== */
+  /* Primary Palette */
+  --color-primary-50: hsl(258, 100%, 98%);
+  --color-primary-100: hsl(258, 95%, 95%);
+  --color-primary-200: hsl(258, 90%, 90%);
+  --color-primary-300: hsl(258, 85%, 80%);
+  --color-primary-400: hsl(258, 80%, 65%);
+  --color-primary-500: hsl(258, 75%, 50%);  /* Main brand color */
+  --color-primary-600: hsl(258, 70%, 40%);
+  --color-primary-700: hsl(258, 65%, 30%);
+  --color-primary-800: hsl(258, 60%, 20%);
+  --color-primary-900: hsl(258, 55%, 10%);
+  --color-primary-950: hsl(258, 50%, 5%);
+
+  /* Neutral Palette */
+  --color-neutral-0: hsl(0, 0%, 100%);
+  --color-neutral-50: hsl(210, 20%, 98%);
+  --color-neutral-100: hsl(210, 15%, 95%);
+  --color-neutral-200: hsl(210, 10%, 90%);
+  --color-neutral-300: hsl(210, 8%, 80%);
+  --color-neutral-400: hsl(210, 6%, 60%);
+  --color-neutral-500: hsl(210, 4%, 40%);
+  --color-neutral-600: hsl(210, 6%, 30%);
+  --color-neutral-700: hsl(210, 8%, 20%);
+  --color-neutral-800: hsl(210, 10%, 12%);
+  --color-neutral-900: hsl(210, 12%, 8%);
+  --color-neutral-950: hsl(210, 15%, 4%);
+
+  /* Semantic Colors */
+  --color-success-50: hsl(142, 76%, 96%);
+  --color-success-500: hsl(142, 71%, 45%);
+  --color-success-600: hsl(142, 71%, 35%);
+  --color-success-700: hsl(142, 71%, 25%);
+
+  --color-warning-50: hsl(48, 96%, 96%);
+  --color-warning-500: hsl(48, 96%, 53%);
+  --color-warning-600: hsl(48, 96%, 43%);
+  --color-warning-700: hsl(48, 96%, 33%);
+
+  --color-error-50: hsl(0, 86%, 97%);
+  --color-error-500: hsl(0, 84%, 60%);
+  --color-error-600: hsl(0, 84%, 50%);
+  --color-error-700: hsl(0, 84%, 40%);
+
+  --color-info-50: hsl(204, 94%, 94%);
+  --color-info-500: hsl(204, 94%, 54%);
+  --color-info-600: hsl(204, 94%, 44%);
+  --color-info-700: hsl(204, 94%, 34%);
+
+  /* ===== TYPOGRAPHY SYSTEM ===== */
+  /* Font Families */
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Font Sizes - Fluid Typography */
+  --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --font-size-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --font-size-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --font-size-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  --font-size-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --font-size-2xl: clamp(1.5rem, 1.3rem + 1vw, 1.875rem);
+  --font-size-3xl: clamp(1.875rem, 1.6rem + 1.375vw, 2.25rem);
+  --font-size-4xl: clamp(2.25rem, 1.9rem + 1.75vw, 3rem);
+  --font-size-5xl: clamp(3rem, 2.5rem + 2.5vw, 4rem);
+  --font-size-6xl: clamp(3.75rem, 3rem + 3.75vw, 5.5rem);
+
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  /* Letter Spacing */
+  --letter-spacing-tighter: -0.05em;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
+
+  /* ===== SPACING SYSTEM ===== */
+  --space-0: 0;
+  --space-px: 1px;
+  --space-0-5: clamp(0.125rem, 0.1rem + 0.125vw, 0.1875rem);
+  --space-1: clamp(0.25rem, 0.2rem + 0.25vw, 0.375rem);
+  --space-1-5: clamp(0.375rem, 0.3rem + 0.375vw, 0.5625rem);
+  --space-2: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+  --space-2-5: clamp(0.625rem, 0.5rem + 0.625vw, 0.9375rem);
+  --space-3: clamp(0.75rem, 0.6rem + 0.75vw, 1.125rem);
+  --space-3-5: clamp(0.875rem, 0.7rem + 0.875vw, 1.3125rem);
+  --space-4: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --space-5: clamp(1.25rem, 1rem + 1.25vw, 1.875rem);
+  --space-6: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
+  --space-7: clamp(1.75rem, 1.4rem + 1.75vw, 2.625rem);
+  --space-8: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --space-9: clamp(2.25rem, 1.8rem + 2.25vw, 3.375rem);
+  --space-10: clamp(2.5rem, 2rem + 2.5vw, 3.75rem);
+  --space-11: clamp(2.75rem, 2.2rem + 2.75vw, 4.125rem);
+  --space-12: clamp(3rem, 2.4rem + 3vw, 4.5rem);
+  --space-14: clamp(3.5rem, 2.8rem + 3.5vw, 5.25rem);
+  --space-16: clamp(4rem, 3.2rem + 4vw, 6rem);
+  --space-20: clamp(5rem, 4rem + 5vw, 7.5rem);
+  --space-24: clamp(6rem, 4.8rem + 6vw, 9rem);
+  --space-28: clamp(7rem, 5.6rem + 7vw, 10.5rem);
+  --space-32: clamp(8rem, 6.4rem + 8vw, 12rem);
+
+  /* ===== BORDER RADIUS SYSTEM ===== */
+  --radius-none: 0;
+  --radius-sm: 0.25rem;
+  --radius-base: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+  --radius-full: 9999px;
+
+  /* ===== SHADOW SYSTEM ===== */
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-base: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-2xl: 0 35px 60px -15px rgb(0 0 0 / 0.3);
+  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+
+  /* Colored Shadows */
+  --shadow-primary: 0 10px 15px -3px rgb(139 92 246 / 0.1), 0 4px 6px -4px rgb(139 92 246 / 0.1);
+  --shadow-success: 0 10px 15px -3px rgb(34 197 94 / 0.1), 0 4px 6px -4px rgb(34 197 94 / 0.1);
+  --shadow-warning: 0 10px 15px -3px rgb(251 191 36 / 0.1), 0 4px 6px -4px rgb(251 191 36 / 0.1);
+  --shadow-error: 0 10px 15px -3px rgb(239 68 68 / 0.1), 0 4px 6px -4px rgb(239 68 68 / 0.1);
+
+  /* ===== ANIMATION SYSTEM ===== */
+  /* Duration */
+  --duration-75: 75ms;
+  --duration-100: 100ms;
+  --duration-150: 150ms;
+  --duration-200: 200ms;
+  --duration-300: 300ms;
+  --duration-500: 500ms;
+  --duration-700: 700ms;
+  --duration-1000: 1000ms;
+
+  /* Easing Functions */
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  /* Common Transitions */
+  --transition-fast: all var(--duration-150) var(--ease-out);
+  --transition-base: all var(--duration-200) var(--ease-in-out);
+  --transition-slow: all var(--duration-300) var(--ease-in-out);
+  --transition-bounce: all var(--duration-500) var(--ease-bounce);
+
+  /* ===== Z-INDEX SCALE ===== */
+  --z-hide: -1;
+  --z-auto: auto;
+  --z-base: 0;
+  --z-docked: 10;
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-banner: 1030;
+  --z-overlay: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-skipLink: 1070;
+  --z-toast: 1080;
+  --z-tooltip: 1090;
+
+  /* ===== BREAKPOINTS ===== */
+  --breakpoint-xs: 20rem;    /* 320px */
+  --breakpoint-sm: 30rem;    /* 480px */
+  --breakpoint-md: 48rem;    /* 768px */
+  --breakpoint-lg: 64rem;    /* 1024px */
+  --breakpoint-xl: 80rem;    /* 1280px */
+  --breakpoint-2xl: 96rem;   /* 1536px */
+
+  /* ===== GLASS MORPHISM SYSTEM ===== */
+  --glass-blur: 16px;
+  --glass-blur-strong: 24px;
+  --glass-bg-light: hsla(0, 0%, 100%, 0.05);
+  --glass-bg-medium: hsla(0, 0%, 100%, 0.08);
+  --glass-bg-strong: hsla(0, 0%, 100%, 0.12);
+  --glass-border: hsla(0, 0%, 100%, 0.1);
+  --glass-border-strong: hsla(0, 0%, 100%, 0.15);
+}
+
+/* ==========================================================================
+   DARK THEME
+   ========================================================================== */
+
+:root[data-theme="dark"] {
+  /* Background Colors */
+  --bg-primary: var(--color-neutral-950);
+  --bg-secondary: var(--color-neutral-900);
+  --bg-tertiary: var(--color-neutral-800);
+  --bg-glass: var(--glass-bg-light);
+  --bg-glass-strong: var(--glass-bg-strong);
+
+  /* Border Colors */
+  --border-primary: var(--color-neutral-700);
+  --border-secondary: var(--color-neutral-600);
+  --border-glass: var(--glass-border);
+  --border-focus: var(--color-primary-400);
+
+  /* Text Colors */
+  --text-primary: var(--color-neutral-0);
+  --text-secondary: var(--color-neutral-200);
+  --text-tertiary: var(--color-neutral-400);
+  --text-muted: var(--color-neutral-500);
+  --text-inverse: var(--color-neutral-900);
+
+  /* Interactive Colors */
+  --interactive-primary: var(--color-primary-500);
+  --interactive-primary-hover: var(--color-primary-400);
+  --interactive-primary-active: var(--color-primary-600);
+  --interactive-secondary: var(--color-neutral-600);
+  --interactive-secondary-hover: var(--color-neutral-500);
+  --interactive-secondary-active: var(--color-neutral-700);
+}
+
+/* ==========================================================================
+   LIGHT THEME
+   ========================================================================== */
+
+:root[data-theme="light"] {
+  /* Background Colors */
+  --bg-primary: var(--color-neutral-0);
+  --bg-secondary: var(--color-neutral-50);
+  --bg-tertiary: var(--color-neutral-100);
+  --bg-glass: hsla(0, 0%, 100%, 0.7);
+  --bg-glass-strong: hsla(0, 0%, 100%, 0.9);
+
+  /* Border Colors */
+  --border-primary: var(--color-neutral-200);
+  --border-secondary: var(--color-neutral-300);
+  --border-glass: hsla(0, 0%, 0%, 0.1);
+  --border-focus: var(--color-primary-500);
+
+  /* Text Colors */
+  --text-primary: var(--color-neutral-900);
+  --text-secondary: var(--color-neutral-700);
+  --text-tertiary: var(--color-neutral-600);
+  --text-muted: var(--color-neutral-500);
+  --text-inverse: var(--color-neutral-0);
+
+  /* Interactive Colors */
+  --interactive-primary: var(--color-primary-600);
+  --interactive-primary-hover: var(--color-primary-500);
+  --interactive-primary-active: var(--color-primary-700);
+  --interactive-secondary: var(--color-neutral-300);
+  --interactive-secondary-hover: var(--color-neutral-200);
+  --interactive-secondary-active: var(--color-neutral-400);
+
+  /* Shadow Adjustments for Light Mode */
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.08);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.12), 0 1px 2px -1px rgb(0 0 0 / 0.12);
+  --shadow-base: 0 4px 6px -1px rgb(0 0 0 / 0.12), 0 2px 4px -2px rgb(0 0 0 / 0.12);
+  --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.12), 0 4px 6px -4px rgb(0 0 0 / 0.12);
+  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.12), 0 8px 10px -6px rgb(0 0 0 / 0.12);
+}
+
+/* ==========================================================================
+   DEFAULT THEME (DARK)
+   ========================================================================== */
+
+:root {
+  /* Set dark as default */
+  --bg-primary: var(--color-neutral-950);
+  --bg-secondary: var(--color-neutral-900);
+  --bg-tertiary: var(--color-neutral-800);
+  --bg-glass: var(--glass-bg-light);
+  --bg-glass-strong: var(--glass-bg-strong);
+
+  --border-primary: var(--color-neutral-700);
+  --border-secondary: var(--color-neutral-600);
+  --border-glass: var(--glass-border);
+  --border-focus: var(--color-primary-400);
+
+  --text-primary: var(--color-neutral-0);
+  --text-secondary: var(--color-neutral-200);
+  --text-tertiary: var(--color-neutral-400);
+  --text-muted: var(--color-neutral-500);
+  --text-inverse: var(--color-neutral-900);
+
+  --interactive-primary: var(--color-primary-500);
+  --interactive-primary-hover: var(--color-primary-400);
+  --interactive-primary-active: var(--color-primary-600);
+  --interactive-secondary: var(--color-neutral-600);
+  --interactive-secondary-hover: var(--color-neutral-500);
+  --interactive-secondary-active: var(--color-neutral-700);
+}
+
+/* ==========================================================================
+   SYSTEM PREFERENCE SUPPORT
+   ========================================================================== */
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --bg-primary: var(--color-neutral-0);
+    --bg-secondary: var(--color-neutral-50);
+    --bg-tertiary: var(--color-neutral-100);
+    --bg-glass: hsla(0, 0%, 100%, 0.7);
+    --bg-glass-strong: hsla(0, 0%, 100%, 0.9);
+
+    --border-primary: var(--color-neutral-200);
+    --border-secondary: var(--color-neutral-300);
+    --border-glass: hsla(0, 0%, 0%, 0.1);
+    --border-focus: var(--color-primary-500);
+
+    --text-primary: var(--color-neutral-900);
+    --text-secondary: var(--color-neutral-700);
+    --text-tertiary: var(--color-neutral-600);
+    --text-muted: var(--color-neutral-500);
+    --text-inverse: var(--color-neutral-0);
+
+    --interactive-primary: var(--color-primary-600);
+    --interactive-primary-hover: var(--color-primary-500);
+    --interactive-primary-active: var(--color-primary-700);
+    --interactive-secondary: var(--color-neutral-300);
+    --interactive-secondary-hover: var(--color-neutral-200);
+    --interactive-secondary-active: var(--color-neutral-400);
+
+    --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.08);
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.12), 0 1px 2px -1px rgb(0 0 0 / 0.12);
+    --shadow-base: 0 4px 6px -1px rgb(0 0 0 / 0.12), 0 2px 4px -2px rgb(0 0 0 / 0.12);
+    --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.12), 0 4px 6px -4px rgb(0 0 0 / 0.12);
+    --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.12), 0 8px 10px -6px rgb(0 0 0 / 0.12);
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION SUPPORT
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-75: 0ms;
+    --duration-100: 0ms;
+    --duration-150: 0ms;
+    --duration-200: 0ms;
+    --duration-300: 0ms;
+    --duration-500: 0ms;
+    --duration-700: 0ms;
+    --duration-1000: 0ms;
+
+    --transition-fast: none;
+    --transition-base: none;
+    --transition-slow: none;
+    --transition-bounce: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   HIGH CONTRAST SUPPORT
+   ========================================================================== */
+
+@media (prefers-contrast: high) {
+  :root {
+    --border-primary: var(--text-primary);
+    --border-secondary: var(--text-secondary);
+    --border-glass: var(--text-primary);
+    
+    --shadow-xs: none;
+    --shadow-sm: none;
+    --shadow-base: 0 0 0 1px var(--border-primary);
+    --shadow-md: 0 0 0 2px var(--border-primary);
+    --shadow-lg: 0 0 0 3px var(--border-primary);
+  }
+}
+
+/* ==========================================================================
+   FORCED COLORS SUPPORT
+   ========================================================================== */
+
+@media (forced-colors: active) {
+  :root {
+    --color-primary-500: ButtonText;
+    --interactive-primary: ButtonFace;
+    --interactive-primary-hover: Highlight;
+    --bg-primary: Canvas;
+    --text-primary: CanvasText;
+    --border-primary: ButtonText;
+  }
+}

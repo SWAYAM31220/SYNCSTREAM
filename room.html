@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join a SyncStream room to watch videos together in sync with friends.">
+    <meta name="theme-color" content="#8b5cf6">
+    
+    <title>SyncStream Room | Watch Together</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='18'%3E🟣%3C/text%3E%3C/svg%3E">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/luxury-effects.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="192x192" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Ccircle cx='96' cy='96' r='96' fill='%238b5cf6'/%3E%3Ctext x='96' y='120' text-anchor='middle' font-size='80' fill='white'%3E🟣%3C/text%3E%3C/svg%3E">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SyncStream">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.youtube.com">
+</head>
+<body class="bg-gradient">
+    <!-- Scroll progress indicator -->
+    <div class="scroll-progress"></div>
+    <!-- Skip to main content link for screen readers -->
+    <a href="#main-content" class="sr-only">Skip to main content</a>
+    
+    <div class="room-container">
+        <!-- Join Modal -->
+        <div id="joinModal" class="modal modal-luxury" role="dialog" aria-labelledby="join-modal-title" aria-modal="true">
+            <div class="modal-content modal-content-luxury">
+                <h2 id="join-modal-title" class="text-luxury">🟣 Join SyncStream Room</h2>
+                <form class="join-form" id="joinForm">
+                    <label for="userName" class="sr-only">Your display name</label>
+                    <input 
+                        type="text" 
+                        id="userName" 
+                        name="userName"
+                        placeholder="Enter your name..." 
+                        class="input input-lg"
+                        required
+                        maxlength="50"
+                        aria-describedby="name-help"
+                        autocomplete="nickname"
+                    >
+                    <div id="name-help" class="sr-only">Enter your display name to join the room</div>
+                    <button 
+                        type="submit" 
+                        id="joinBtn" 
+                        class="btn btn-primary btn-lg btn-primary-luxury ripple-effect"
+                        aria-describedby="join-btn-help"
+                    >
+                        Join Room
+                    </button>
+                    <div id="join-btn-help" class="sr-only">Click to join the synchronized viewing room</div>
+                </form>
+            </div>
+        </div>
+
+        <header class="room-header glass-luxury" role="banner">
+            <div class="room-info">
+                <h1 class="logo text-luxury floating" role="img" aria-label="SyncStream logo">SyncStream</h1>
+                <div class="room-details">
+                    <span class="room-id">Room: <span id="currentRoomId" class="font-mono"></span></span>
+                    <span class="participants-count" aria-live="polite">
+                        <span role="img" aria-label="Participants">👥</span> 
+                        <span id="participantCount">0</span> watching
+                    </span>
+                </div>
+            </div>
+            <div class="user-info">
+                <span id="currentUser" class="current-user" aria-label="Current user"></span>
+                <button 
+                    id="shareRoomBtn" 
+                    class="btn btn-secondary btn-secondary-luxury glow-on-hover"
+                    aria-label="Share room link with others"
+                >
+                    Share Room
+                </button>
+            </div>
+        </header>
+
+        <main id="main-content" class="room-main" role="main">
+            <section class="video-section" aria-labelledby="video-section-title">
+                <h2 id="video-section-title" class="sr-only">Video Player</h2>
+                
+                <div class="video-container glass-luxury tilt-3d">
+                    <div id="videoPlayer" class="video-player" role="application" aria-label="YouTube video player">
+                        <p class="video-placeholder pulse-luxury">Video will load here...</p>
+                    </div>
+                    
+                    <div class="video-controls" role="toolbar" aria-label="Video controls">
+                        <button 
+                            id="playBtn" 
+                            class="btn btn-sm btn-secondary"
+                            aria-label="Play video"
+                        >
+                            ▶️ Play
+                        </button>
+                        <button 
+                            id="pauseBtn" 
+                            class="btn btn-sm btn-secondary"
+                            aria-label="Pause video"
+                        >
+                            ⏸️ Pause
+                        </button>
+                        <span class="video-time" aria-live="polite">
+                            Time: <span id="currentTime">0:00</span>
+                        </span>
+                        
+                        <div class="host-controls" id="hostControls" style="display: none;">
+                            <button 
+                                id="syncBtn" 
+                                class="btn btn-sm btn-ghost"
+                                aria-label="Synchronize all participants"
+                            >
+                                🔄 Sync All
+                            </button>
+                            <button 
+                                id="addVideoBtn" 
+                                class="btn btn-sm btn-ghost"
+                                aria-label="Add video to queue"
+                            >
+                                ➕ Add Video
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video Queue for Admin -->
+                <div id="videoQueue" class="video-queue glass-card glass-luxury animate-on-scroll" style="display: none;" role="region" aria-labelledby="queue-title">
+                    <div class="queue-header">
+                        <h3 id="queue-title" class="text-luxury">Video Queue</h3>
+                        <button 
+                            id="toggleQueueBtn" 
+                            class="btn btn-sm btn-ghost"
+                            aria-label="Toggle video queue"
+                        >
+                            ➕
+                        </button>
+                    </div>
+                    
+                    <div id="queueForm" class="queue-form" style="display: none;">
+                        <div class="input-group">
+                            <label for="nextVideoUrl" class="sr-only">Next video URL</label>
+                            <input 
+                                type="url" 
+                                id="nextVideoUrl" 
+                                placeholder="Paste next YouTube video URL..." 
+                                class="input"
+                                aria-describedby="next-video-help"
+                            >
+                            <div id="next-video-help" class="sr-only">Enter a YouTube URL to add to the queue</div>
+                            <button 
+                                id="addToQueueBtn" 
+                                type="button"
+                                class="btn btn-primary btn-sm btn-primary-luxury ripple-effect"
+                                aria-label="Add video to queue"
+                            >
+                                Add to Queue
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="queue-list" id="queueList" role="list">
+                        <div class="queue-placeholder">No videos in queue</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="chat-section glass-luxury" aria-labelledby="chat-title">
+                <div class="chat-header">
+                    <h3 id="chat-title" class="text-luxury">💬 Chat</h3>
+                    <div class="online-users" aria-live="polite">
+                        <span id="onlineUsers">Loading...</span>
+                    </div>
+                </div>
+                <div 
+                    class="chat-messages" 
+                    id="chatMessages" 
+                    role="log" 
+                    aria-live="polite" 
+                    aria-label="Chat messages"
+                    tabindex="0"
+                >
+                    <div class="system-message">
+                        Welcome to the room! Start chatting with your friends.
+                    </div>
+                </div>
+                <form class="chat-input-container" id="chatForm">
+                    <label for="chatInput" class="sr-only">Chat message</label>
+                    <input 
+                        type="text" 
+                        id="chatInput" 
+                        name="message"
+                        placeholder="Type your message..." 
+                        class="input"
+                        maxlength="500"
+                        aria-describedby="chat-help"
+                        autocomplete="off"
+                    >
+                    <div id="chat-help" class="sr-only">Type your message and press Enter or click Send</div>
+                    <button 
+                        type="submit"
+                        id="sendBtn" 
+                        class="btn btn-primary btn-primary-luxury magnetic-hover"
+                        aria-label="Send message"
+                    >
+                        Send
+                    </button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <!-- Copy Link Modal -->
+    <div id="shareModal" class="modal modal-luxury hidden" role="dialog" aria-labelledby="share-modal-title" aria-modal="true">
+        <div class="modal-content modal-content-luxury">
+            <h3 id="share-modal-title" class="text-luxury">Share Room</h3>
+            <p>Copy this link to invite friends:</p>
+            <div class="input-group">
+                <label for="shareRoomLink" class="sr-only">Room sharing link</label>
+                <input 
+                    type="text" 
+                    id="shareRoomLink" 
+                    name="shareRoomLink"
+                    readonly 
+                    class="input input-mono"
+                    aria-label="Room sharing link"
+                >
+                <button 
+                    id="copyRoomLinkBtn" 
+                    class="btn btn-secondary btn-secondary-luxury glow-on-hover"
+                    aria-label="Copy room link to clipboard"
+                >
+                    Copy
+                </button>
+            </div>
+            <button 
+                id="closeShareModal" 
+                class="btn btn-ghost"
+                aria-label="Close share dialog"
+            >
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast notification container -->
+    <div id="toast-container" class="toast-container" role="region" aria-live="polite" aria-label="Notifications"></div>
+    
+    <!-- Focus management helper -->
+    <script>
+        // Add focus-visible polyfill for better keyboard navigation
+        (function() {
+            if (typeof window !== 'undefined' && !('focus-visible' in document.createElement('div'))) {
+                document.documentElement.classList.add('js-focus-visible');
+            }
+        })();
+    </script>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/simple-particles.js"></script>
+    <script src="js/particles-system.js"></script>
+    <script src="js/visual-effects.js"></script>
+    <script src="js/enhanced-room.js"></script>
+    
+    <!-- New SyncStream Features -->
+    <script src="js/analytics-dashboard.js"></script>
+    <script src="js/user-profiles.js"></script>
+    <script src="js/admin-controls.js"></script>
+    <script src="js/advanced-video-controls.js"></script>
+    <script src="js/video-reactions.js"></script>
+    <script src="js/mobile-features.js"></script>
+    <script src="js/theater-mode.js"></script>
+    <script src="js/picture-in-picture.js"></script>
+    <script src="js/chat-reactions.js"></script>
+    <script src="js/feature-integration.js"></script>
+</body>
+</html>

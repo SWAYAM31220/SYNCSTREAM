@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Watch YouTube videos together in sync with friends. Create rooms, chat in real-time, and enjoy synchronized viewing experiences.">
+    <meta name="keywords" content="watch together, sync video, youtube sync, video chat, watch party">
+    <meta name="author" content="SyncStream">
+    <meta name="theme-color" content="#8b5cf6">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SyncStream - Watch Together">
+    <meta property="og:description" content="Watch YouTube videos together in sync with friends. Create rooms, chat in real-time, and enjoy synchronized viewing experiences.">
+    <meta property="og:site_name" content="SyncStream">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="SyncStream - Watch Together">
+    <meta property="twitter:description" content="Watch YouTube videos together in sync with friends.">
+    
+    <title>SyncStream - Watch Together | Synchronized Video Experience</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='18'%3E🟣%3C/text%3E%3C/svg%3E">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/luxury-effects.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="192x192" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Ccircle cx='96' cy='96' r='96' fill='%238b5cf6'/%3E%3Ctext x='96' y='120' text-anchor='middle' font-size='80' fill='white'%3E🟣%3C/text%3E%3C/svg%3E">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SyncStream">
+    
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-TileColor" content="#8b5cf6">
+    <meta name="msapplication-TileImage" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 144 144'%3E%3Ccircle cx='72' cy='72' r='72' fill='%238b5cf6'/%3E%3Ctext x='72' y='90' text-anchor='middle' font-size='60' fill='white'%3E🟣%3C/text%3E%3C/svg%3E">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body class="bg-gradient">
+    <!-- Scroll progress indicator -->
+    <div class="scroll-progress"></div>
+    <!-- Skip to main content link for screen readers -->
+    <a href="#main-content" class="sr-only">Skip to main content</a>
+    
+    <div class="container">
+        <header class="site-header" role="banner">
+            <h1 class="logo text-luxury floating" role="img" aria-label="SyncStream logo">SyncStream</h1>
+            <p class="tagline tagline-luxury text-reveal-luxury">Premium Watch-Together Experience</p>
+        </header>
+
+        <main id="main-content" class="main-content" role="main">
+            <section class="hero-section" aria-labelledby="hero-heading">
+                <h2 id="hero-heading" class="hero-title text-luxury animate-on-scroll">Watch Videos Together, Anywhere</h2>
+                <p class="hero-description text-reveal-luxury">Create a room, share the link, and enjoy synchronized viewing with friends</p>
+                
+                <div class="create-room-section">
+                    <form class="input-group" role="search" aria-labelledby="create-room-heading">
+                        <h3 id="create-room-heading" class="sr-only">Create a new room</h3>
+                        <label for="videoUrl" class="sr-only">YouTube video URL</label>
+                        <input 
+                            type="url" 
+                            id="videoUrl" 
+                            name="videoUrl"
+                            placeholder="Paste YouTube video URL here..." 
+                            class="input input-lg"
+                            required
+                            aria-describedby="url-help"
+                            autocomplete="url"
+                        >
+                        <div id="url-help" class="sr-only">Enter a valid YouTube video URL to create a synchronized viewing room</div>
+                        <button 
+                            type="submit" 
+                            id="createRoomBtn" 
+                            class="btn btn-primary btn-lg btn-primary-luxury ripple-effect magnetic-hover"
+                            aria-describedby="create-btn-help"
+                        >
+                            <span>Create Room</span>
+                        </button>
+                        <div id="create-btn-help" class="sr-only">Click to create a new synchronized viewing room</div>
+                    </form>
+                </div>
+
+                <div id="roomCreated" class="glass-card glass-luxury hidden animate-on-scroll" role="region" aria-labelledby="room-success-heading" aria-live="polite">
+                    <h3 id="room-success-heading">🎉 Room Created Successfully!</h3>
+                    <div class="share-section stack">
+                        <p>Share this link with your friends:</p>
+                        <div class="input-group">
+                            <label for="shareLink" class="sr-only">Room share link</label>
+                            <input 
+                                type="text" 
+                                id="shareLink" 
+                                name="shareLink"
+                                readonly 
+                                class="input input-mono"
+                                aria-label="Room sharing link"
+                            >
+                            <button 
+                                id="copyLinkBtn" 
+                                class="btn btn-secondary btn-secondary-luxury glow-on-hover"
+                                aria-label="Copy room link to clipboard"
+                            >
+                                Copy Link
+                            </button>
+                        </div>
+                        <a 
+                            href="#" 
+                            id="joinRoomBtn" 
+                            class="btn btn-primary btn-lg btn-primary-luxury magnetic-hover"
+                            role="button"
+                            aria-label="Join the newly created room"
+                        >
+                            Join Room Now
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features" aria-labelledby="features-heading">
+                <h2 id="features-heading" class="sr-only">Platform Features</h2>
+                
+                <article class="feature glass-luxury tilt-3d animate-on-scroll slide-left">
+                    <div class="feature-icon floating" role="img" aria-label="Movie camera">🎬</div>
+                    <h3 class="text-luxury">Synchronized Playback</h3>
+                    <p>Everyone watches in perfect sync</p>
+                </article>
+                
+                <article class="feature glass-luxury tilt-3d animate-on-scroll">
+                    <div class="feature-icon floating" role="img" aria-label="Speech bubble" style="animation-delay: 1s">💬</div>
+                    <h3 class="text-luxury">Real-time Chat</h3>
+                    <p>Chat with friends while watching</p>
+                </article>
+                
+                <article class="feature glass-luxury tilt-3d animate-on-scroll slide-right">
+                    <div class="feature-icon floating" role="img" aria-label="Link" style="animation-delay: 2s">🔗</div>
+                    <h3 class="text-luxury">Easy Sharing</h3>
+                    <p>Just share a link to invite others</p>
+                </article>
+            </section>
+        </main>
+    </div>
+
+    <!-- Toast notification container -->
+    <div id="toast-container" class="toast-container" role="region" aria-live="polite" aria-label="Notifications"></div>
+    
+    <!-- Focus management helper -->
+    <script>
+        // Add focus-visible polyfill for better keyboard navigation
+        (function() {
+            if (typeof window !== 'undefined' && !('focus-visible' in document.createElement('div'))) {
+                document.documentElement.classList.add('js-focus-visible');
+            }
+        })();
+    </script>
+    
+    <script src="js/supabase.js"></script>
+    <script src="js/simple-particles.js"></script>
+    <script src="js/particles-system.js"></script>
+    <script src="js/visual-effects.js"></script>
+    <script src="js/enhanced-main.js"></script>
+    
+    <!-- New SyncStream Features -->
+    <script src="js/analytics-dashboard.js"></script>
+    <script src="js/user-profiles.js"></script>
+    <script src="js/mobile-features.js"></script>
+    <script src="js/feature-integration.js"></script>
+</body>
+</html>
